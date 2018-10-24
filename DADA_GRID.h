@@ -1,5 +1,5 @@
 /*************************************************** 
-  This is a library for DADA Grid 4x4 PCB  w/TCA9655 and 16x APA!02 
+  This is a library for DADA Grid 4x4 PCB  w/TCA9555 and 16x APA102 
 
   These displays use I2C to communicate, 2 pins are required to  
   interface
