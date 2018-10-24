@@ -22,6 +22,8 @@ i2c Address must be set by the solder jumpers on the back of the PCB.
 To use more more than 8 PCBs you can use a second i2c Bus. The Library currently only supports this on the Teensy with the i2c_t3 Library by nox771 :
 - https://github.com/nox771/i2c_t3
 
+
+## LEDs
 The APA102 RGB LEDs use additional 2 lines for DATA and CLK Signals
 Example Sketches use the FastLED Library to control the RGB LEDs:
 - https://github.com/FastLED/FastLED
