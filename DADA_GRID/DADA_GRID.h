@@ -1,18 +1,18 @@
 /*************************************************** 
-  This is a library for the Adafruit Trellis w/HT16K33
-
-  Designed specifically to work with the Adafruit Trellis 
-  ----> https://www.adafruit.com/products/1616
-  ----> https://www.adafruit.com/products/1611
+  This is a library for DADA Grid 4x4 PCB  w/TCA9655 and 16x APA!02 
 
   These displays use I2C to communicate, 2 pins are required to  
   interface
+  
+  The Code is based on the Library for Adafruit Trellis.
   Adafruit invests time and resources providing this open source code, 
   please support Adafruit and open-source hardware by purchasing 
   products from Adafruit!
 
   Written by Limor Fried/Ladyada for Adafruit Industries.  
   MIT license, all text above must be included in any redistribution
+  
+  rewritten by Steffen Sennert for DADA 
  ****************************************************/
 
 #ifndef _DADA_GRID_H_
