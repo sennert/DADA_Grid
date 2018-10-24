@@ -1,18 +1,16 @@
 /*************************************************** 
-  This is a library for DADA_GRID w/TCA9555
-
-  Designed specifically to work with the Adafruit Trellis 
-  ----> https://www.adafruit.com/products/1616
-  ----> https://www.adafruit.com/products/1611
-
+  This is a library for DADA Grid 4x4 PCB  w/TCA9655 and 16x APA!02 
   These displays use I2C to communicate, 2 pins are required to  
   interface
+  
+  The Code is based on the Library for Adafruit Trellis.
   Adafruit invests time and resources providing this open source code, 
   please support Adafruit and open-source hardware by purchasing 
   products from Adafruit!
-
   Written by Limor Fried/Ladyada for Adafruit Industries.  
   MIT license, all text above must be included in any redistribution
+  
+  rewritten by Steffen Sennert for DADA 
  ****************************************************/
 
 #include <i2c_t3.h>  // include the i2c written by Brian "nox771", github.com/nox771/i2c_t3 //for teensy second i2c
