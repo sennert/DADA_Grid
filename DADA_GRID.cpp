@@ -42,7 +42,6 @@ void DADA_GRID::begin(uint8_t _addr = 0x20, uint8_t _i2cp = 0) {
   if(i2c_port==0 || i2c_port==1)
   {
 	  	  Wire.begin();
-
 		  Wire.beginTransmission(_addr);
 		  Wire.send(NXP_CONFIG);
 		  Wire.send(0xff & 0xFFFF);  // low byte
@@ -57,7 +56,6 @@ void DADA_GRID::begin(uint8_t _addr = 0x20, uint8_t _i2cp = 0) {
   } else if(i2c_port==2)
   {
 	  	  Wire1.begin();
-
 		  Wire1.beginTransmission(_addr);
 		  Wire1.send(NXP_CONFIG);
 		  Wire1.send(0xff & 0xFFFF);  // low byte
@@ -71,6 +69,7 @@ void DADA_GRID::begin(uint8_t _addr = 0x20, uint8_t _i2cp = 0) {
 		  Wire1.endTransmission();
   }
 }
+
 
 /* 
 Helper button functions, the data is updated every readSwitches() call!
@@ -156,8 +155,6 @@ boolean DADA_GRID::readSwitches(void) {
    	    }
 
 	//}
-
-
   	return false;  
 }
 
@@ -225,8 +222,6 @@ DADA_GRID_SET::DADA_GRID_SET(DADA_GRID *matrix0,
       _nummatrix= i+1;
     else break;
   }
-
-
 }
 
 
@@ -255,8 +250,6 @@ void DADA_GRID_SET::begin(uint8_t addr0, uint8_t addr1,
 	      matrices[i]->begin(addrs[i],2);
 	  }
 	}  
-
-
 }
 
 
@@ -304,6 +297,7 @@ boolean DADA_GRID_SET::justPressed(uint8_t k) {
   if (matrix >= _nummatrix) return false;  
   return (matrices[matrix]->isKeyPressed(key) & !matrices[matrix]->wasKeyPressed(key));
 }
+
 boolean DADA_GRID_SET::justReleased(uint8_t k) {
   if (k > 191) return false;
   uint8_t matrix, key;
