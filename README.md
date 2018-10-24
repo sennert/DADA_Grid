@@ -1,5 +1,7 @@
 # DADA_Grid
 
+![Rainbow Test on PCB](images/DADA_Grid_4x4_front.jpg)
+
 This is a library for the DADA Grid 4x4 PCB based on the Design of Adafruit Trellis
 
 up to 8 PCB can share the same I2C Bus to communicate, 2 pins are required to interface, 
