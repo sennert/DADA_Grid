@@ -13,8 +13,11 @@
   rewritten by Steffen Sennert for DADA 
  ****************************************************/
 
-#include <i2c_t3.h>  // include the i2c written by Brian "nox771", github.com/nox771/i2c_t3 //for teensy second i2c
 #include "DADA_GRID.h"
+#include "Wire.h"
+//#include <i2c_t3.h>  // include the i2c written by Brian "nox771", github.com/nox771/i2c_t3 //for teensy second i2c
+//#define WIRE_PINS   	I2C_PINS_18_19		// only for Teensy
+//#define WIRE1_PINS   	I2C_PINS_29_30		// only for teensy
 
 #define NXP_INPUT      (0)  // For NXP9555
 #define NXP_OUTPUT     (2)  // See data sheet
@@ -22,9 +25,7 @@
 #define NXP_CONFIG     (6)
 
 
-#define WIRE_PINS   	I2C_PINS_18_19
-#define WIRE1_PINS   	I2C_PINS_29_30
-
+#define unit8_t byte
 
 DADA_GRID::DADA_GRID(void) {
 
@@ -43,30 +44,31 @@ void DADA_GRID::begin(uint8_t _addr = 0x20, uint8_t _i2cp = 0) {
   {
 	  	  Wire.begin();
 		  Wire.beginTransmission(_addr);
-		  Wire.send(NXP_CONFIG);
-		  Wire.send(0xff & 0xFFFF);  // low byte
-		  Wire.send(0xFFFF >> 8);    // high byte
+		  Wire.write(NXP_CONFIG);
+		  Wire.write(0xff & 0xFFFF);  // low byte
+		  Wire.write(0xFFFF >> 8);    // high byte
 		  Wire.endTransmission();
 
 		  Wire.beginTransmission(_addr);
-		  Wire.send(NXP_INVERT);
-		  Wire.send(0xff & 0xFFFF);  // low byte
-		  Wire.send(0xFFFF >> 8);    // high byte
+		  Wire.write(NXP_INVERT);
+		  Wire.write(0xff & 0xFFFF);  // low byte
+		  Wire.write(0xFFFF >> 8);    // high byte
 		  Wire.endTransmission();
   } else if(i2c_port==2)
   {
-	  	  Wire1.begin();
+/*	 	  Wire1.begin();
 		  Wire1.beginTransmission(_addr);
-		  Wire1.send(NXP_CONFIG);
-		  Wire1.send(0xff & 0xFFFF);  // low byte
-		  Wire1.send(0xFFFF >> 8);    // high byte
+		  Wire1.write(NXP_CONFIG);
+		  Wire1.write(0xff & 0xFFFF);  // low byte
+		  Wire1.write(0xFFFF >> 8);    // high byte
 		  Wire1.endTransmission();
 
 		  Wire1.beginTransmission(_addr);
-		  Wire1.send(NXP_INVERT);
-		  Wire1.send(0xff & 0xFFFF);  // low byte
-		  Wire1.send(0xFFFF >> 8);    // high byte
+		  Wire1.write(NXP_INVERT);
+		  Wire1.write(0xff & 0xFFFF);  // low byte
+		  Wire1.write(0xFFFF >> 8);    // high byte
 		  Wire1.endTransmission();
+		  */
   }
 }
 
@@ -84,10 +86,10 @@ bool DADA_GRID::wasKeyPressed(uint8_t k) {
 	return buttonState_Old[k];
 }
 
-boolean DADA_GRID::justPressed(uint8_t k) {
+bool DADA_GRID::justPressed(uint8_t k) {
   return (isKeyPressed(k) & !wasKeyPressed(k));
 }
-boolean DADA_GRID::justReleased(uint8_t k) {
+bool DADA_GRID::justReleased(uint8_t k) {
   return (!isKeyPressed(k) & wasKeyPressed(k));
 }
 
@@ -97,36 +99,36 @@ boolean DADA_GRID::justReleased(uint8_t k) {
 /* 
    Gets the switch memory data and updates the last/current read
 */
-boolean DADA_GRID::readSwitches(void) {
+bool DADA_GRID::readSwitches(void) {
 
   newData = 0;
 
   if(i2c_port<=1){ 
 
-	  Wire.beginTransmission((byte)i2c_addr);
-	  Wire.send(NXP_INPUT);
+	  Wire.beginTransmission(i2c_addr);
+	  Wire.write(NXP_INPUT);
 	  Wire.endTransmission();
 
-	  Wire.requestFrom((byte)i2c_addr, (byte)4);
+	  Wire.requestFrom(i2c_addr, 4);
 	  if (Wire.available()) {
-	    newData = Wire.receive();
+	    newData = Wire.read();
 	  }
 	  if (Wire.available()) {
-	    newData |= (Wire.receive() << 8);
+	    newData |= (Wire.read() << 8);
 	  }
 	} else if (i2c_port==2){ 
 
-	  Wire1.beginTransmission((byte)i2c_addr);
-	  Wire1.send(NXP_INPUT);
+/*	  Wire1.beginTransmission(i2c_addr);
+	  Wire1.write(NXP_INPUT);
 	  Wire1.endTransmission();
 
-	  Wire1.requestFrom((byte)i2c_addr, (byte)4);
+	  Wire1.requestFrom(i2c_addr, 4);
 	  if (Wire1.available()) {
-	    newData = Wire1.receive();
+	    newData = Wire1.read();
 	  }
 	  if (Wire1.available()) {
-	    newData |= (Wire1.receive() << 8);
-	  }
+	    newData |= (Wire1.read() << 8);
+	  }*/
 	}
 
 
@@ -285,7 +287,7 @@ bool DADA_GRID_SET::wasKeyPressed(uint8_t k) {
   return  matrices[matrix]->wasKeyPressed(key);
 }
 
-boolean DADA_GRID_SET::justPressed(uint8_t k) {
+bool DADA_GRID_SET::justPressed(uint8_t k) {
   if (k > 191) return false;
   uint8_t matrix, key;
   
@@ -298,7 +300,7 @@ boolean DADA_GRID_SET::justPressed(uint8_t k) {
   return (matrices[matrix]->isKeyPressed(key) & !matrices[matrix]->wasKeyPressed(key));
 }
 
-boolean DADA_GRID_SET::justReleased(uint8_t k) {
+bool DADA_GRID_SET::justReleased(uint8_t k) {
   if (k > 191) return false;
   uint8_t matrix, key;
   
@@ -315,8 +317,7 @@ boolean DADA_GRID_SET::justReleased(uint8_t k) {
 /* 
    Gets the switch memory data and updates the last/current read
 */
-
-boolean DADA_GRID_SET::readSwitches(void) {
+bool DADA_GRID_SET::readSwitches(void) {
   for (uint8_t i=0; i<_nummatrix; i++) {
     if (matrices[i] != 0)
       matrices[i]->readSwitches();
