@@ -65,7 +65,7 @@ void setup() {
   // INT pin requires a pullup
   pinMode(INTPIN, INPUT);
   digitalWrite(INTPIN, HIGH);
-  dadaGridSet.begin(0x20,0x21,0x22,0x23,0x24,0x25,0x26,0x27);  // or four!
+  dadaGridSet.begin(0x20,0x21,0x22,0x23,0x24,0x25,0x26,0x27);  // up to 12!
       
   Serial.println("finished Setup");
 }
