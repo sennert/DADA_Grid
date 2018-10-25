@@ -17,13 +17,18 @@
 
 #ifndef _DADA_GRID_H_
 #define _DADA_GRID_H_
+#include "Wire.h"
+//#include <i2c_t3.h>  // include the i2c written by Brian "nox771", github.com/nox771/i2c_t3 //for teensy second i2c
+//#define WIRE_PINS   	I2C_PINS_18_19		// only for Teensy
+//#define WIRE1_PINS   	I2C_PINS_29_30		// only for teensy
 
 // Set _BV if not already set (eg. Arudiono DUE, Arduino Zero Pro)
 #ifndef _BV
 #define _BV(bit) (1 << (bit))
 #endif
 
-#include <i2c_t3.h>  // include the i2c written by Brian "nox771", github.com/nox771/i2c_t3 //for teensy second i2c
+//#include <i2c_t3.h>  // include the i2c written by Brian "nox771", github.com/nox771/i2c_t3 //for teensy second i2c
+
 
 #define NXP_INPUT      (0)  // For NXP9555
 #define NXP_OUTPUT     (2)  // See data sheet
@@ -35,13 +40,13 @@ class DADA_GRID {
  public:
   DADA_GRID(void);
   void begin(uint8_t _addr, uint8_t _i2cp);
-  boolean readSwitches(void);
+  bool readSwitches(void);
 
   bool isKeyPressed(uint8_t k);
   bool wasKeyPressed(uint8_t k);
 
-  boolean justPressed(uint8_t k);
-  boolean justReleased(uint8_t k);
+  bool justPressed(uint8_t k);
+  bool justReleased(uint8_t k);
 
  private:
   uint16_t newData, oldData;
@@ -80,9 +85,9 @@ void begin(uint8_t _addr0 = 0x20, uint8_t _addr1 = 0x21,
   bool isKeyPressed(uint8_t k);
   bool wasKeyPressed(uint8_t k);
 
-  boolean readSwitches(void);
-  boolean justPressed(uint8_t k);
-  boolean justReleased(uint8_t k);
+  bool readSwitches(void);
+  bool justPressed(uint8_t k);
+  bool justReleased(uint8_t k);
 
  private:
   DADA_GRID *matrices[12];
