@@ -27,8 +27,6 @@
 #define _BV(bit) (1 << (bit))
 #endif
 
-//#include <i2c_t3.h>  // include the i2c written by Brian "nox771", github.com/nox771/i2c_t3 //for teensy second i2c
-
 
 #define NXP_INPUT      (0)  // For NXP9555
 #define NXP_OUTPUT     (2)  // See data sheet
@@ -78,7 +76,7 @@ void begin(uint8_t _addr0 = 0x20, uint8_t _addr1 = 0x21,
 	     uint8_t _addr2 = 0x22, uint8_t _addr3 = 0x23,
 	     uint8_t _addr4 = 0x24, uint8_t _addr5 = 0x25,
 	     uint8_t _addr6 = 0x26, uint8_t _addr7 = 0x27,
-		 uint8_t _addr8 = 0x20, uint8_t _addr9 = 0x21,
+		uint8_t _addr8 = 0x20, uint8_t _addr9 = 0x21,
 	     uint8_t _addr10 = 0x22, uint8_t _addr11 = 0x23);
 
 
