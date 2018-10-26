@@ -24,10 +24,6 @@ DADA_GRID_SET dadaGridSet =  DADA_GRID_SET(&matrix0, &matrix1, &matrix2, &matrix
 //DADA_GRID_SET dadaGridSet =  DADA_GRID_SET(&matrix0, &matrix1, &matrix2, &matrix3, &matrix4, &matrix5, &matrix6, &matrix7, &matrix8, &matrix9, &matrix10, &matrix11); //for 12 PCBS
 
 
-//***** DADA GRID INIT ****
-DADA_GRID     matrix[12];
-
-
 // set to however many you're working with here, up to 12
 #define NUMTRELLIS 8
 
