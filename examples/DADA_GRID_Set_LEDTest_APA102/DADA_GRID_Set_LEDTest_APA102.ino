@@ -20,8 +20,7 @@
 
 //***** DADA GRID INIT ****
 DADA_GRID     matrix[8];    // up to 12 with 2 i2c busses
-DADA_GRID_SET dadaGridSet =  DADA_GRID_SET(&matrix0, &matrix1, &matrix2, &matrix3, &matrix4, &matrix5, &matrix6, &matrix7);
-//DADA_GRID_SET dadaGridSet =  DADA_GRID_SET(&matrix0, &matrix1, &matrix2, &matrix3, &matrix4, &matrix5, &matrix6, &matrix7, &matrix8, &matrix9, &matrix10, &matrix11); //for 12 PCBS
+DADA_GRID_SET dadaGridSet(&matrix[0], &matrix[1], &matrix[2], &matrix[3], &matrix[4], &matrix[5], &matrix[6], &matrix[7]);
 
 
 // set to however many you're working with here, up to 12
