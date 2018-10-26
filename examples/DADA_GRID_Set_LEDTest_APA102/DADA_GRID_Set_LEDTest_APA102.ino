@@ -34,21 +34,16 @@
 // set the mode here
 #define MODE LATCHING 
 
-DADA_GRID matrix0 = DADA_GRID();
-DADA_GRID matrix1 = DADA_GRID();
-DADA_GRID matrix2 = DADA_GRID();
-DADA_GRID matrix3 = DADA_GRID();
-DADA_GRID matrix4 = DADA_GRID();
-DADA_GRID matrix5 = DADA_GRID();
-DADA_GRID matrix6 = DADA_GRID();
-DADA_GRID matrix7 = DADA_GRID();
-//DADA_GRID matrix8 = DADA_GRID();
-//DADA_GRID matrix9 = DADA_GRID();
-//DADA_GRID matrix10 = DADA_GRID();
-//DADA_GRID matrix11 = DADA_GRID();
-//
+
+//***** DADA GRID INIT ****
+DADA_GRID     matrix[8];    // up to 12 with 2 i2c busses
 DADA_GRID_SET dadaGridSet =  DADA_GRID_SET(&matrix0, &matrix1, &matrix2, &matrix3, &matrix4, &matrix5, &matrix6, &matrix7);
-//DADA_GRID_SET dadaGridSet =  DADA_GRID_SET(&matrix0, &matrix1, &matrix2, &matrix3, &matrix4, &matrix5, &matrix6, &matrix7, &matrix8, &matrix9, &matrix10, &matrix11);
+//DADA_GRID_SET dadaGridSet =  DADA_GRID_SET(&matrix0, &matrix1, &matrix2, &matrix3, &matrix4, &matrix5, &matrix6, &matrix7, &matrix8, &matrix9, &matrix10, &matrix11); //for 12 PCBS
+
+
+//***** DADA GRID INIT ****
+DADA_GRID     matrix[12];
+
 
 // set to however many you're working with here, up to 12
 #define NUMTRELLIS 8
