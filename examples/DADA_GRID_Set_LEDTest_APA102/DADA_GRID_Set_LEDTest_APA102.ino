@@ -1,21 +1,4 @@
-/*************************************************** 
-  This is a test example for the Adafruit Trellis w/HT16K33
-
-  Designed specifically to work with the Adafruit Trellis 
-  ----> https://www.adafruit.com/products/1616
-  ----> https://www.adafruit.com/products/1611
-
-  These displays use I2C to communicate, 2 pins are required to  
-  interface
-  Adafruit invests time and resources providing this open source code, 
-  please support Adafruit and open-source hardware by purchasing 
-  products from Adafruit!
-
-  Written by Limor Fried/Ladyada for Adafruit Industries.  
-  MIT license, all text above must be included in any redistribution
- ****************************************************/
- 
-//#include <i2c_t3.h>  // include the i2c written by Brian "nox771", github.com/nox771/i2c_t3
+//#include <i2c_t3.h>  // include for Teensy, written by Brian "nox771", github.com/nox771/i2c_t3
 #include "DADA_GRID.h"
 #include <Wire.h>
 
