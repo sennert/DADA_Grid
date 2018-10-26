@@ -121,22 +121,18 @@ void setup() {
 
 
 void loop() {
-//    fill_solid (leds, NUM_LEDS, CRGB::DarkGray);
 
     // If a button was just pressed or released...
     if (dadaGridSet.readSwitches()) {
-      // go through every button
       for (uint8_t i=0; i<(NUM_BUTTONS-1); i++) {
         // if it was pressed, turn it on
         if (dadaGridSet.justPressed(i)) {
           Serial.print("v"); Serial.println(i);
           if (buttonState[i])  {
             buttonState[i] = false;
-//            leds[i] = CRGB::DarkGrey;}
           }
           else {
             buttonState[i] = true; 
-//            leds[i] = CRGB::Blue;
           }
         }
         // if it was released, turn it off
@@ -157,23 +153,17 @@ void loop() {
       }
     } 
 
-  showYBar(xPos);
+//  showYBar(xPos);
     ledStrip.write(leds, NUM_LEDS, BRIGHTNESS);
 
 }
+
+
 
 uint8_t iForXY(uint16_t _x,uint16_t _y){
   return addr_Array[_y][_x];
 }
 
-void rainbowLineMatrix(){
-   for(int y=0; y<12; y++){
-    for(int x=0; x<16; x++){
-        int io = iForXY(x,y);
-//      leds[io] = hsvToRgb( ((y*5)+gHue), 255, 255);
-    }
-  } 
-}
 
 void showYBar(uint8_t _xpos){
   for(int y = 0; y < (NUM_LINES); y++){
